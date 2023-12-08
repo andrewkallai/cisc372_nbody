@@ -3,10 +3,11 @@ LIBS= -lm
 ALWAYS_REBUILD=makefile
 COMPILER=gcc
 EXT=c
-#ifeq ($(CC),nvcc)
-#	COMPILER=nvcc
-#	EXT=cu
-#endif
+
+ifeq ($(CC),nvcc)
+	COMPILER=nvcc
+	EXT=cu
+endif
 
 nbody: nbody.o compute.o
 	$(COMPILER) $(FLAGS) $^ -o $@ $(LIBS)
